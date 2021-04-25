@@ -115,11 +115,22 @@ body {
   border-style: none;
   margin-right: 20px;
   height: 90%;
+  /* text-indent: 2rem */
+  /* another new attrinute i Learned */
+  padding-left: 2rem;
 }
 
 .search-section input::placeholder {
   color: hsl(0, 0%, 75%);
-  padding-left: 2rem;
+  opacity: 0.8;
+}
+
+.red{
+  color: rgba(255,0,0,0.4);
+}
+
+.label{
+  color: red;
 }
 
 .search-section .btn {
