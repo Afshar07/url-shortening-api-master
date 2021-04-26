@@ -31,32 +31,19 @@ function callAPI(userInput){
       historyAndDetails.shift();
     }
     for ( let i = historyAndDetails.length-1; i > historyAndDetails.length - 4 ; i--){
-      console.log(historyAndDetails);
       $("#middle-section .container")
         .append("<div class='contain-short-link'>"+
-         historyAndDetails[i].urlUserEntered+
-        //"<div class='link-and-copy'>"+
-        "<a id='link' href='"+historyAndDetails[i].urlShorted+"'>"+historyAndDetails[i].urlShorted+"</a>"+
-        "<button class='btn'>Copy</button>"+//"</div>"+
-        "</div>"
-      ).fadeIn(900);
+                 historyAndDetails[i].urlUserEntered+
+                "<input id='link-"+i+"' value='"+historyAndDetails[i].urlShorted+"' readonly>"+
+                "<button class='btn btn-"+i+"'>Copy</button>"+
+                "</div> <script>" +
+                "$('.contain-short-link .btn-"+i+
+                "').click(function(){navigator.clipboard.writeText(document.getElementById('link-"+i+"').value);$('#link-"+i+"').fadeOut(1000).fadeIn(1000);$('.contain-short-link .btn-"+i+"').html('Copied!').css({'background-color':'hsl(257, 27%, 26%)'});})"+
+                "</script>"
+                ).fadeIn(900);
     }
-
-    $(".contain-short-link .btn").click(function(){
-      (".contain-short-link .btn").fadeOut(400);
-      copy("#link");
-    });
-
-  });
+});
 }
-
-function copy (a) {
-    let copyText = $(a);
-    copyText.select();
-    document.execCommand("copy");
-}
-
-
 
 $('.btn').click(function(){
   $("#middle-section .container")
@@ -64,7 +51,6 @@ $('.btn').click(function(){
     $("#middle-section .container").html("");
   });
   let a = $("#input").val();
-
   if (a.length === 0 ) { // if the Input Were Empty
     $(".label")
     .html("Please Add a link");
@@ -85,10 +71,22 @@ $('.btn').click(function(){
     //Solution : there were no solution so i decide to do this with
     //input value attribute 02:07 AM
   }else{
+    navigator.clipboard.writeText(a);
     callAPI(a);
-    $(".contain-short-link .btn").click(function(){
-      copy("#link");
-    });
   }
-
 });
+
+
+
+
+//  function copy (a) {
+//   let copyText = $(a);
+//   copyText.select();
+//   document.execCommand("copy");
+// }
+
+// below code is good for copy item to clipboard but
+
+//navigator.clipboard.writeText(a);
+// is a MAGIC for real
+// a must be a DOM string
