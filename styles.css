@@ -2,7 +2,7 @@
 
 html{
   overflow-x: hidden;
-
+  pverflow-anchor: none;
   /* for solving the element left shifting */
 }
 
@@ -150,6 +150,7 @@ body {
 /* middle parts */
 #middle-section {
   background-color: #f3f4ed;
+  padding-top: 80px;
 }
 
 .middle-title {
@@ -159,6 +160,9 @@ body {
   padding-top: 8rem;
   margin-bottom: 4rem;
 }
+
+
+
 .middle-title h2{
   font-weight: 800;
 }
@@ -225,4 +229,25 @@ body {
     margin-left: 29rem;
     margin-top: 2rem;
     width: 10.4rem;
+}
+
+/* the Short links styles */
+
+.contain-short-link{
+  background-color: #fff;
+  border-radius: 10px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  font-size: 11pt;
+  padding: 20px;
+}
+
+.contain-short-link a {
+  margin-left: 13.937rem;
+  padding: 6px;
+}
+
+.contain-short-link .btn{
+  border-radius: 5px;
 }
