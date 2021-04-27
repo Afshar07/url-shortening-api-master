@@ -27,12 +27,14 @@ function callAPI(userInput){
       urlShorted: shortLink
     };
     historyAndDetails.push(linkDetails);
+
     if (historyAndDetails.length > 3) {
       historyAndDetails.shift();
     }
-    for ( let i = historyAndDetails.length-1; i > historyAndDetails.length - 4 ; i--){
+
+    for ( let i = historyAndDetails.length-1; i < historyAndDetails.length - 4 ; i--){
       $("#middle-section .container")
-        .append("<div class='contain-short-link'>"+
+        .append("<div class='contain-short-link'>"+ // this append works on ShortLinks Details
                  historyAndDetails[i].urlUserEntered+
                 "<input id='link-"+i+"' value='"+historyAndDetails[i].urlShorted+"' readonly>"+
                 "<button class='btn btn-"+i+"'>Copy</button>"+
@@ -40,8 +42,10 @@ function callAPI(userInput){
                 "$('.contain-short-link .btn-"+i+
                 "').click(function(){navigator.clipboard.writeText(document.getElementById('link-"+i+"').value);$('#link-"+i+"').fadeOut(1000).fadeIn(1000);$('.contain-short-link .btn-"+i+"').html('Copied!').css({'background-color':'hsl(257, 27%, 26%)'});})"+
                 "</script>"
-                ).fadeIn(900);
+              ).fadeIn(900);
     }
+    let jsonData = JSON.stringify(historyAndDetails);
+    sessionStorage.setItem("data" , jsonData);
 });
 }
 
@@ -77,7 +81,22 @@ $('.btn').click(function(){
 });
 
 
-
+if (sessionStorage.getItem("data")){
+  let newData = sessionStorage.getItem("data");
+  let jsonParse = JSON.parse(newData);
+  for (var i = 0 ; i<=jsonParse.length ; i++) {
+  $("#middle-section .container")
+    .append("<div class='contain-short-link'>"+ // this append works on ShortLinks Details
+             jsonParse[i].urlUserEntered+
+            "<input id='link-"+i+"' value='"+jsonParse[i].urlShorted+"' readonly>"+
+            "<button class='btn btn-"+i+"'>Copy</button>"+
+            "</div> <script>" +
+            "$('.contain-short-link .btn-"+i+
+            "').click(function(){navigator.clipboard.writeText(document.getElementById('link-"+i+"').value);$('#link-"+i+"').fadeOut(1000).fadeIn(1000);$('.contain-short-link .btn-"+i+"').html('Copied!').css({'background-color':'hsl(257, 27%, 26%)'});})"+
+            "</script>"
+            ).fadeIn(900);
+          }
+        }
 
 //  function copy (a) {
 //   let copyText = $(a);
