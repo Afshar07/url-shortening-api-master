@@ -251,3 +251,24 @@ body {
 .contain-short-link .btn{
   border-radius: 5px;
 }
+
+.latest-link{
+  border: 5px solid #ffdf6b;
+}
+
+.linkAndCopy{
+  display: flex;
+  float: left;
+  height: 55px;
+}
+
+.linkAndCopy input{
+  border: none;
+  margin-right: 10px;
+  color:hsl(180, 66%, 49%);
+}
+
+.userUrlEntered{
+  width: 550px;
+  word-break: break-all;
+}
