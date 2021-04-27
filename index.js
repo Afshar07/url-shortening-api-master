@@ -32,24 +32,47 @@ function callAPI(userInput){
       historyAndDetails.shift();
     }
 
-    for ( let i = historyAndDetails.length-1; i < historyAndDetails.length - 4 ; i--){
-      $("#middle-section .container")
-        .append("<div class='contain-short-link'>"+ // this append works on ShortLinks Details
-                 historyAndDetails[i].urlUserEntered+
-                "<input id='link-"+i+"' value='"+historyAndDetails[i].urlShorted+"' readonly>"+
-                "<button class='btn btn-"+i+"'>Copy</button>"+
-                "</div> <script>" +
-                "$('.contain-short-link .btn-"+i+
-                "').click(function(){navigator.clipboard.writeText(document.getElementById('link-"+i+"').value);$('#link-"+i+"').fadeOut(1000).fadeIn(1000);$('.contain-short-link .btn-"+i+"').html('Copied!').css({'background-color':'hsl(257, 27%, 26%)'});})"+
-                "</script>"
-              ).fadeIn(900);
-    }
     let jsonData = JSON.stringify(historyAndDetails);
     sessionStorage.setItem("data" , jsonData);
-});
+
+
+    for ( let i = historyAndDetails.length-1; i >= historyAndDetails.length-3 ; i--) {
+
+      if( i == historyAndDetails.length-1){
+
+        $("#middle-section .container")
+          .append("<div class='contain-short-link latest-link'> <div class='userUrlEntered'>"+ // this append works on ShortLinks Details
+                   historyAndDetails[i].urlUserEntered+
+                  "</div> <div class='linkAndCopy'><input id='link-"+i+"' value='"+historyAndDetails[i].urlShorted+"' readonly>"+
+                  "<button class='btn btn-"+i+"'>Copy</button>"+
+                  "</div> </div> <script>" +
+                  "$('.contain-short-link .btn-"+i+
+                  "').click(function(){navigator.clipboard.writeText(document.getElementById('link-"+i+
+                  "').value);$('#link-"+i+"').fadeOut(1000).fadeIn(1000);$('.contain-short-link .btn-"+i+
+                  "').html('Copied!').css({'background-color':'hsl(257, 27%, 26%)'});})"+
+                  "</script>"
+                ).fadeIn(900);
+      }else{
+
+              $("#middle-section .container")
+                .append("<div class='contain-short-link'> <div class='userUrlEntered'>"+ // this append works on ShortLinks Details
+                         historyAndDetails[i].urlUserEntered+
+                        "</div><div class='linkAndCopy'> <input id='link-"+i+"' value='"+historyAndDetails[i].urlShorted+"' readonly>"+
+                        "<button class='btn btn-"+i+"'>Copy</button>"+
+                        "</div> </div> <script>" +
+                        "$('.contain-short-link .btn-"+i+
+                        "').click(function(){navigator.clipboard.writeText(document.getElementById('link-"+i+
+                        "').value);$('#link-"+i+"').fadeOut(1000).fadeIn(1000);$('.contain-short-link .btn-"+i+
+                        "').html('Copied!').css({'background-color':'hsl(257, 27%, 26%)'});})"+
+                        "</script>"
+                      ).fadeIn(900);
+                   }
+            }
+      });
 }
 
 $('.btn').click(function(){
+  console.log("clicked");
   $("#middle-section .container")
   .fadeOut(600 , function(){
     $("#middle-section .container").html("");
@@ -84,15 +107,27 @@ $('.btn').click(function(){
 if (sessionStorage.getItem("data")){
   let newData = sessionStorage.getItem("data");
   let jsonParse = JSON.parse(newData);
-  for (var i = 0 ; i<=jsonParse.length ; i++) {
+    if(jsonParse.length === 1 ){
+      historyAndDetails.push(jsonParse[0]);
+    }else if (jsonParse.length <= 2){
+      historyAndDetails.push(jsonParse[0]);
+      historyAndDetails.push(jsonParse[1]);
+    } else if (jsonParse.length == 3){
+      historyAndDetails.push(jsonParse[1]);
+      historyAndDetails.push(jsonParse[2]);
+    }
+
+  for (var i = jsonParse.length-1 ; i >=jsonParse.length - 4 ; i-- ) {
   $("#middle-section .container")
-    .append("<div class='contain-short-link'>"+ // this append works on ShortLinks Details
+    .append("<div class='contain-short-link'> <div class='userUrlEntered'>"+ // this append works on ShortLinks Details
              jsonParse[i].urlUserEntered+
-            "<input id='link-"+i+"' value='"+jsonParse[i].urlShorted+"' readonly>"+
+            "</div> <div class='linkAndCopy'><input id='link-"+i+"' value='"+jsonParse[i].urlShorted+"' readonly>"+
             "<button class='btn btn-"+i+"'>Copy</button>"+
-            "</div> <script>" +
+            "</div> </div> <script>" +
             "$('.contain-short-link .btn-"+i+
-            "').click(function(){navigator.clipboard.writeText(document.getElementById('link-"+i+"').value);$('#link-"+i+"').fadeOut(1000).fadeIn(1000);$('.contain-short-link .btn-"+i+"').html('Copied!').css({'background-color':'hsl(257, 27%, 26%)'});})"+
+            "').click(function(){navigator.clipboard.writeText(document.getElementById('link-"+i+
+            "').value);$('#link-"+i+"').fadeOut(1000).fadeIn(1000);$('.contain-short-link .btn-"+i+
+            "').html('Copied!').css({'background-color':'hsl(257, 27%, 26%)'});})"+
             "</script>"
             ).fadeIn(900);
           }
