@@ -2,7 +2,7 @@
 
 html{
   overflow-x: hidden;
-  pverflow-anchor: none;
+  overflow-anchor: none;
   /* for solving the element left shifting */
 }
 
@@ -229,6 +229,65 @@ body {
     margin-left: 29rem;
     margin-top: 2rem;
     width: 10.4rem;
+}
+
+/* footer part */
+#footer{
+  background-color: hsl(260, 8%, 14%);
+  color:#fff;
+  padding: 4rem;
+}
+
+#footer .container{
+  display: flex;
+  justify-content: space-between;
+}
+
+#footer table{
+  width: 35rem;
+  margin-left: 9rem;
+  font-size: 11pt;
+
+}
+
+tbody{
+  font-weight: 300;
+  color: hsl(0, 0%, 75%);
+}
+
+td span{
+  cursor: pointer;
+}
+
+td span:hover {
+  color: hsl(180, 66%, 49%);
+}
+
+.logos i {
+  margin-left: 10px;
+  color: #fff;
+}
+
+.logos i:hover{
+  color: hsl(180, 66%, 49%);
+}
+
+/* attribution */
+
+.attribution{
+  color: hsl(0, 0%, 75%);
+  background-color: hsl(260, 8%, 14%);
+  text-align: center;
+  font-size: 10pt;
+}
+
+.attribution a{
+  text-decoration: none;
+  color: hsl(0, 0%, 75%);
+}
+
+.attribution a:hover{
+  color: hsl(180, 66%, 49%);
 }
 
 /* the Short links styles */
