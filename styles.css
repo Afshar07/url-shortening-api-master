@@ -151,6 +151,7 @@ body {
 #middle-section {
   background-color: #f3f4ed;
   padding-top: 80px;
+  padding-bottom: 10rem;
 }
 
 .middle-title {
@@ -161,27 +162,58 @@ body {
   margin-bottom: 4rem;
 }
 
-
-
 .middle-title h2{
   font-weight: 800;
 }
+
 .middle-details{
   margin-top: 1rem;
   text-align: center;
   color: #9e9aa7;
   width: 40%;
 }
+
 .card-container{
   display: flex;
   justify-content: space-around;
+  margin: 5rem auto 8rem auto;
 }
+
 .main-card{
-    width: 25rem;
+    width: 22rem;
     padding: 3rem 4rem 2rem 2rem;
     text-align: left;
     border-radius: 10px;
 }
+
+.card-container .main-card:nth-child(2){
+  position: relative;
+  top: 3rem;
+}
+
+.card-container .main-card:nth-child(2)::before{
+  content: " ";
+  width: 20px;
+  border-bottom: 8px solid hsl(180, 66%, 49%);
+  position: relative;
+  right: 3.3rem;
+  top:4rem
+}
+
+.card-container .main-card:last-child{
+  position: relative;
+  top: 6rem;
+}
+
+.card-container .main-card:last-child::before{
+  content: " ";
+  width: 20px;
+  border-bottom: 8px solid hsl(180, 66%, 49%);
+  position: relative;
+  right: 3.3rem;
+  top:1rem
+}
+
 .card-img-container{
   display: flex;
   justify-content: center;
@@ -192,19 +224,21 @@ body {
   border-radius: 50%;
   margin-top: -14vh;
 }
+
 .card-img{
   width: 50%;
   height: 50%;
-
 }
 
-.main-card h3{
+.main-card h4{
   font-weight: 800;
   margin-top: 2.5rem;
 }
+
 .main-card p{
   color: #9e9aa7;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.8;
 }
 
 /* before-footer part */
@@ -218,16 +252,17 @@ body {
   height: 12rem;
   color: #fff;
   padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
 }
 
 #before-footer h2{
-  display: flex;
-  justify-content: center;
+  margin-bottom: 2rem
 }
 
 #before-footer .btn {
-    margin-left: 29rem;
-    margin-top: 2rem;
     width: 10.4rem;
 }
 
@@ -238,16 +273,10 @@ body {
   padding: 4rem;
 }
 
-#footer .container{
-  display: flex;
-  justify-content: space-between;
-}
-
 #footer table{
   width: 35rem;
   margin-left: 9rem;
   font-size: 11pt;
-
 }
 
 tbody{
@@ -255,12 +284,26 @@ tbody{
   color: hsl(0, 0%, 75%);
 }
 
-td span{
+td span:nth-child(n+2){
+  display: inline-block;
   cursor: pointer;
+  margin-bottom: 12px;
 }
 
-td span:hover {
+/* span doesnt take the vertically Margin */
+/* till the display changed to Block or Inline-Block */
+
+td span:nth-child(n+2):hover {
   color: hsl(180, 66%, 49%);
+}
+
+td span:first-child{
+  color: #fff;
+  font-weight: 700;
+}
+
+.logos{
+  margin-left: 5rem;
 }
 
 .logos i {
