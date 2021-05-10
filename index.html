@@ -19,7 +19,7 @@
 
 <body>
   <div class="container">
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
           <img src="images/logo.svg" alt="" />
@@ -47,10 +47,12 @@
       </div>
     </nav>
   </div>
-  <div class="container">
     <section id="head-section">
       <div class="container">
         <div class="content-container">
+          <div class="hidden-till-mobile-size">
+            <img src="images/illustration-working.svg" alt="working">
+          </div>
           <div class="left-content">
             <h1>More than just <br />shorter links</h1>
             <p>
@@ -59,7 +61,7 @@
             </p>
             <div class="btn">Get Started</div>
           </div>
-          <img src="images/illustration-working.svg" />
+          <img class="image" src="images/illustration-working.svg" />
         </div>
         <div class="search-section">
           <form>
@@ -84,9 +86,9 @@
           </p>
         </div>
         <div>
-          <div class="card-container row">
-            <div class="card main-card col-lg-4 col-sm-12">
-              <div class="card-img-container">
+          <div class="card-container">
+            <div class="card main-card">
+              <div class="card-img-container" style="margin-top: -14vh">
                 <img src="images/icon-brand-recognition.svg" alt="Brand Recognition" class="card-img" />
               </div>
               <h4>Brand Recognition</h4>
@@ -96,7 +98,7 @@
                 content.
               </p>
             </div>
-            <div class="card main-card col-lg-4 col-sm-12">
+            <div class="card main-card">
               <div class="card-img-container">
                 <img src="images/icon-detailed-records.svg" alt="Detailed Records" class="card-img">
               </div>
@@ -106,7 +108,7 @@
                 decisions.</p>
             </div>
 
-            <div class="card main-card col-lg-4 col-sm-12">
+            <div class="card main-card">
               <div class="card-img-container">
                 <img src="images/icon-fully-customizable.svg" alt="Fully Customizable" class="card-img">
               </div>
@@ -127,6 +129,7 @@
         <button class="btn">Get Started</button>
       </div>
     </section>
+    <!-- before-footer section -->
 
     <section id="footer">
       <div class="container">
@@ -134,25 +137,25 @@
           <div class="brand-logo-footer col-lg-2 col-sm-12">
             <img src="images/logo-forfooter.svg" alt="logo">
           </div>
-          <div class="col-lg-7 col-sm-12">
+          <div class="table-container col-lg-7 col-sm-12">
             <table class="table table-borderless text-light">
               <tbody>
-                <tr class="row">
-                  <td class="col-lg-4 col-sm-12">
+                <tr>
+                  <td>
                     <span>Features</span> <br>
                     <br>
                     <span>Link Shortening</span> <br>
                     <span>Branded Links</span> <br>
                     <span>Analytics</span>
                   </td>
-                  <td class="col-lg-4 col-sm-12">
+                  <td>
                     <span>Resources</span> <br>
                     <br>
                     <span>blog</span> <br>
                     <span>Developers</span><br>
                     <span>Support</span> <br>
                   </td>
-                  <td class="col-lg-4 col-sm-12">
+                  <td>
                     <span>Company</span> <br>
                     <br>
                     <span>About</span> <br>
